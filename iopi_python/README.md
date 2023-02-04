@@ -1,6 +1,6 @@
 # ABElectronics_CLI - iopi_python
 
-A command line interface written in C for controlling the IO Pi, [IO Pi Plus](https://www.abelectronics.co.uk/p/54/IO-Pi-Plus) and [IO Pi Zero](https://www.abelectronics.co.uk/p/71/IO-Pi-Zero).
+A command line interface using the Python programming language for controlling the IO Pi, [IO Pi Plus](https://www.abelectronics.co.uk/p/54/io-pi-plus) and [IO Pi Zero](https://www.abelectronics.co.uk/kb/article/1098/io-pi-zero).
 
 Requires python smbus to be installed with: 
 ```
@@ -19,7 +19,7 @@ For example, to read a pin from bus 1 on the IO Pi at I2C address 0x20 with pull
 python iopi.py -a 0x20 -n 1 -d 0 -u 1 -r
 ```
 
-Input values can be in decimal, hexidecimal or binary.  When using hexidemial format the number with 0x, when using binary format the number with 0b.
+Input values can be in decimal, hexadecimal or binary.  When using hexadecimal, format the number with 0x; when using binary, format the number with 0b.
 
 ```123 = 0x7b = 0b1111011```
 
@@ -43,10 +43,10 @@ Read the status of the selected port or pin; For each pin 0 = logic low, 1 = log
 Write a value to the selected port or pin; For each pin 0 = logic low, 1 = logic high; If a port has been selected the value can be 0 to 255.  If a pin has been selected the value can be 0 or 1;  e.g., '-w 1 -n 3' will set pin 3 to be logic high.
 
 ```-d --direction=value```  
-set port or pin direction; For each pin 0 = output, 1 = input; If a port has been selected the value can be 0 to 255.  If a pin has been selected the value can be 0 or 1;  e.g., '-d 1 -n 3' will set pin 3 to be an input.  
+set port or pin direction; For each pin, 0 = output, 1 = input; If a port has been selected the value can be 0 to 255.  If a pin has been selected the value can be 0 or 1;  e.g., '-d 1 -n 3' will set pin 3 to be an input.  
 
 ```-i --invert=value```  
-invert the selected port or pin; For each pin 0 = normal, 1 = inverted; If a port has been selected the value can be 0 to 255.  If a pin has been selected the value can be 0 or 1;  e.g., '-i 1 -n 3' will set pin 3 to be inverted.
+invert the selected port or pin; For each pin, 0 = normal, 1 = inverted; If a port has been selected the value can be 0 to 255.  If a pin has been selected the value can be 0 or 1;  e.g., '-i 1 -n 3' will set pin 3 to be inverted.
 
 ```-u --pullup=value```  
 Set the internal 100K pull-up resistors for the selected port or pin; 1 = enabled, 0 = disabled; If a port has been selected the value can be 0 to 255.  If a pin has been selected the value can be 0 or 1;  e.g., '-u 1 -n 3' will enable the pull-up resistor for pin 3.
@@ -55,13 +55,13 @@ Set the internal 100K pull-up resistors for the selected port or pin; 1 = enable
 Set the interrupt pins to be mirrored or for separate ports; 1 = The pins are internally connected, 0 = The pins are not connected. INTA is associated with PortA and INTB is associated with PortB;  e.g., '-m 1' will set both interrupt pins IA and IB to be mirrored.
 
 ```-l --interruptpolarity=value```  
-Set the polarity of the interrupt output pins IA and IB; 1 = Active-high, 0 = Active-low; ; e.g., '-l 1' will set the interrupt output pins to go logic high when an interrupt occurs.
+Set the polarity of the interrupt output pins IA and IB; 1 = Active-high, 0 = Active-low; e.g., '-l 1' will set the interrupt output pins to go logic high when an interrupt occurs.
 
 ```-t --interrupttype=value```  
 Sets the type of interrupt for the selected pin or port; 1 = interrupt is fired when the pin matches the default value, 0 = the interrupt is fired on state change; If a port has been selected the value can be 0 to 255.  If a pin has been selected the value can be 0 or 1; e.g., '-t 0 -n 3' will set the interrupt for pin 3 to trigger on state change.
 
 ```-f --interruptdefaults=value```  
-Set the compare value for interrupt-on-change on the selected port. If the associated pin level is the opposite from the set value an interrupt occurs; If a port has been selected the value can be 0 to 255.  If a pin has been selected the value can be 0 or 1;  e.g., '-f 1 -n 3' will set the default value for pin 3 to be logic high.
+Set the compare value for interrupt-on-change on the selected port. If the associated pin level is the opposite of the set value an interrupt occurs; If a port has been selected the value can be 0 to 255.  If a pin has been selected the value can be 0 or 1;  e.g., '-f 1 -n 3' will set the default value for pin 3 to be logic high.
 
 ```-e --enableinterrupts=value```  
 Enable interrupts for the selected port or pin; For each pin 0 = off, 1 = on; If a port has been selected the value can be 0 to 255.  If a pin has been selected the value can be 0 or 1;  e.g., '-e 1 -n 3' will enable the interrupt for pin 3.
@@ -79,4 +79,4 @@ Set the interrupts IA and IB to 0
 Set the output number format to binary; e.g., 0b00100100
 
 ```-x --hex```  
-Set the output number format to hexidecimal; e.g., 0xFC
+Set the output number format to hexadecimal; e.g., 0xFC
